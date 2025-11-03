@@ -1,37 +1,30 @@
-let select = 0;
-let rgb = [255, 0, 0];
+let color = [137, 232, 154];
+let size = 100;
+let counter = 0;
 
 function setup() {
-  createCanvas(400, 400);
+  noStroke();
+  createCanvas(windowWidth, windowHeight);
+  frameRate(8);
 }
 
 function draw() {
- if(select==0){
-    rgb = [255, 0, 0];
-  }else{
-    rgb = [0, 255, 0];
-  }
+  color[0] = color[0] - 10;
+  color[1] = color[1] - 15;
+  color[2] = color[2] - 10;
 
-  fill(rgb);
- let i = 1;
-  while(i<=500){
-    let r = random(30)
-    circle(i, i+r, 30) ; 
-    i = i+3; 
-  }
+  counter++;
 
-  fill([255, 255, 0])
-  for (i=0; i<=600; i=i+1.4){
-    let r = mouseX; //random (200)
-            // x,  y,        size
-    circle (i+100, i+mouseY, mouseX+r);
+  if (counter > 10) {
+    color = [137, 232, 154];
+    counter = 0;
   }
+  fill(color);
+  circle(mouseX, mouseY, size);
 }
 
-  function mouseClicked() {
-  if(select==0){
-    select=1;
-  }else{
-    select=0;
-  }
+function mouseClicked() {
+
+  fill(98, 54, 107)
+  rect(random(0,windowWidth), random(0,windowHeight), 50, 50);
 }
